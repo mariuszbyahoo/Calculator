@@ -13,13 +13,10 @@ public class Program {
 
             Scanner input = new Scanner(System.in);
 
-            System.out.println("Co chcesz zrobić;");
-            System.out.println("Dodawać? Wpisz 1");
-            System.out.println("Odejmować? Wpisz 2");
-            System.out.println("Mnożyć? Wpisz 3");
-            System.out.println("Dzielić? Wpisz 4");
-            System.out.println("Potęgować? Wpisz 5");
-            System.out.println("Wyjść z programu? Wpisz 0");
+            String info = "\n\nCo chcesz zrobić; \nDodawać? Wpisz 1\nOdejmować? Wpisz 2\nMnożyć? Wpisz 3\nDzielić? Wpisz 4\n"+
+                    "Potęgować? Wpisz 5\nWyjść z programu? Wpisz jakąkolwiek inną liczbę";
+
+            System.out.println(info);
 
             int choice = input.nextInt();
 
@@ -44,15 +41,15 @@ public class Program {
                     Exponentiation exponentiation = new Exponentiation();
                     exponentiation.exp();
                     break;
-                case 0:
-                    break;
                 default:
-                    System.out.println("Zły wybór, jeszcze raz");
+                    System.out.println("Zamykam program, miłego dnia");
+                    System.exit(0);
                     break;
             }
 /* bazowa forma w najprostszej postaci jeszcze do ulepszenia, obecna przewiduje tylko po dwa składniki działań arytmetycznych.
         brakuje:
         -pętli zapętlającej działanie programu,
-        -instrukcji pozwalających na działania na kilku(nastu) składniktach*/
+        -instrukcji pozwalających na działania na kilku(nastu) składniktach
+        -po wybraniu złej liczby w menu, powrót do wyboru opcji (1-5)*/
         }
     }
