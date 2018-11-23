@@ -11,15 +11,18 @@ class Division {
             numbers[i] = input.nextDouble();
         }
         double result=numbers[0]*numbers[0];
+        boolean zeroOccured = false;
         for (int i=0; i<amount; i++) {
             result /= numbers[i];
+            if (numbers[i] == 0){
+                System.out.println("Nie można dzielić przez zero!");
+                zeroOccured = true;
+                break;
+            }
+        }if(zeroOccured == true){
+            System.out.println("Następnym razem nie dziel przez zero!");
+        }else {
+            System.out.print("Wynik dzielenia to: " + result);
         }
-        System.out.print("Wynik dzielenia to: "+result);
-        /*if(divisor != 0) {
-            System.out.print("Wynik dzielenia to: ");
-            System.out.print(dividend / divisor);
-        }else{
-            System.out.println("Nie można dzielić przez 0!");
-        }*/
     }
 }
