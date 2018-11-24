@@ -18,7 +18,7 @@ public class Program {
                     "Potęgować? Wpisz 5\n Wyjść z programu? Wciśnij cyfrę od 6 do 9 lub 0";
 
             System.out.println(info);
-// STWÓRZ DZIAŁAJACA WERSJĘ TRY CATCH W METODACH!
+
             boolean error = true;
             while (error) {
                 try {
