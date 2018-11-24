@@ -33,6 +33,8 @@ class Division {
                 error = false;
             } catch (InputMismatchException ex) {
                 System.out.println("Podałeś złą wartość, spróbuj jeszcze raz: ");
+            }finally{
+                input.nextLine();
             }
         }
         input.close();

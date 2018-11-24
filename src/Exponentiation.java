@@ -32,6 +32,8 @@ public class Exponentiation {
                 error = false;
             } catch (InputMismatchException ex) {
                 System.out.println("Podałeś zły znak, jeszcze raz");
+            }finally{
+                input.nextLine();
             }
         }
         input.close();
