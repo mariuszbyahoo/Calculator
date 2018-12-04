@@ -3,27 +3,23 @@ import java.util.Scanner;
 
 public class Program {
 
-        private final int ADDITION = 1;
-        private final int SUBTRACTION = 2;
-        private final int MULTIPLICATION = 3;
-        private final int DIVISION = 4;
-        private final int EXPONENTIATION = 5;
-        private final int EXIT_PROGRAMME = 0;
-
         public static void main(String [] args){
-
-            Scanner input = new Scanner(System.in);
 
             String info = "\n\nCo chcesz zrobić; \nDodawać? Wpisz 1\nOdejmować? Wpisz 2\nMnożyć? Wpisz 3\nDzielić? Wpisz 4\n"+
                     "Potęgować? Wpisz 5\n Wyjść z programu? Wciśnij cyfrę od 6 do 9 lub 0";
 
-            System.out.println(info);
+            String info2 = "\n\nCo chcesz zrobić; \nKilka równań? Wciśnij 1 \nJedno równanie? Wciśnij 2";
+
+            Scanner input = new Scanner(System.in);
 
             boolean error = true;
+            System.out.println(info2);
+            int choice = input.nextInt();
+
             while (error) {
+                System.out.println(info);
                 try {
-                    int choice = input.nextInt();
-                    switch (choice) {
+                    switch (input.nextInt()) {
                         case 1:
                             Addition addition = new Addition();
                             addition.add();
@@ -45,17 +41,17 @@ public class Program {
                             exponentiation.exp();
                             break;
                     }
-                    error = false;
+                    System.out.println(info2);
+                    if(input.nextInt() == 1) {
+                        error = true;
+                    }
+                    else{
+                            error = false;
+                    }
                 }catch(InputMismatchException ex){
                     System.out.println("Podałeś zły znak, spróbuj jeszcze raz!");
-                }finally{
-                    input.nextLine();
                 }
             }
-/* bazowa forma w najprostszej postaci jeszcze do ulepszenia, obecna przewiduje tylko po dwa składniki działań arytmetycznych.
-        brakuje:
-        -pętli zapętlającej działanie programu,
-        -po wybraniu złej liczby w menu, powrót do wyboru opcji (1-5) obecnie, jest to opcja "wyjścia z programu"
-        */
+            input.close();
         }
     }
