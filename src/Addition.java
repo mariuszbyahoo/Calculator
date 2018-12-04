@@ -2,7 +2,7 @@ import java.util.InputMismatchException;
 import java.util.Scanner;
 
 class Addition {
-     void add(){
+    public void add(){
         Scanner input = new Scanner(System.in);
         boolean error = true;
         while (error) {
@@ -27,6 +27,5 @@ class Addition {
                 input.nextLine();
             }
         }
-        input.close();
     }
 }

@@ -8,25 +8,11 @@ public class Exponentiation {
         boolean error = true;
         while (error) {
             try {
-                System.out.println("Ile razy potęgować?");
-                int amount = input.nextInt();
-
                 System.out.println("Podaj podstawę potęgi: ");
                 double baseOfThePower = input.nextDouble();
                 System.out.println("Podaj wykładnik potęgi: ");
                 double indicator = input.nextDouble();
-
-
-                double result = Math.pow(baseOfThePower, indicator);
-                double result2 = 0;
-
-                System.out.println("A potem do której potęgi?");
-                int indicator2 = input.nextInt();
-
-                for(int i=0; i<amount;i++){
-                    result2 = Math.pow(result,indicator2);
-                }
-                System.out.println(result2);
+                // no i tu są schody bo nie da się zrobić tego operatorem ^= tylko musi być metoda
 
 
                 if (baseOfThePower == 0 && indicator == 0) {
@@ -41,16 +27,12 @@ public class Exponentiation {
                     System.out.println("\nWięc możemy się umówić, że wynikiem jest 1.");
                 } else {
                     System.out.print("Wynik potęgowania to: ");
-                    System.out.print(result);
+                    System.out.print(Math.pow(baseOfThePower, indicator));
                 }
                 error = false;
             } catch (InputMismatchException ex) {
                 System.out.println("Podałeś zły znak, jeszcze raz");
-            }finally{
-                input.nextLine();
             }
         }
-        input.close();
-
     }
 }

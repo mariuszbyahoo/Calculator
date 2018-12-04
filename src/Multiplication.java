@@ -23,10 +23,7 @@ class Multiplication {
                 error = false;
             } catch (InputMismatchException ex) {
                 System.out.println("Podałeś złą wartość, jeszcze raz: ");
-            }finally{
-                input.nextLine();
             }
         }
-        input.close();
     }
 }

@@ -8,6 +8,7 @@ class Subtraction {
         while (error) {
             try {
                 System.out.println("Ile liczb chcesz odjąć?");
+
                 int amount = input.nextInt();
                 double numbers[] = new double[amount];
                 for (int i = 0; i < amount; i++) {
@@ -22,11 +23,8 @@ class Subtraction {
                 error = false;
             } catch (InputMismatchException ex) {
                 System.out.println("Podałeś złą wartość, jeszcze raz: ");
-            } finally{
-                input.nextLine();
             }
         }
-        input.close();
     }
 }
 
