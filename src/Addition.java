@@ -14,12 +14,11 @@ class Addition {
                     System.out.println("Podaj element " + i);
                     numbers[i] = input.nextDouble();
                 }
-                double result = 0;
                 for (int i = 0; i < amount; i++) {
-                    result += numbers[i];
+                    Program.result += numbers[i];
                 }
 
-                System.out.println("wynik dodawania to: " + result);
+                System.out.println("wynik dodawania to: " + Program.result);
                 error = false;
             } catch (InputMismatchException ex) {
                 System.out.println("Podałeś złą wartość, spróbuj jeszcze raz: ");
