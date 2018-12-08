@@ -1,6 +1,12 @@
+import java.util.InputMismatchException;
+
 public class Multiplication {
     public void multi (double firstNumber , double secondNumber){
-        firstNumber *= secondNumber;
-        Program.firstNumber = firstNumber;
+        try {
+            firstNumber *= secondNumber;
+            Program.firstNumber = firstNumber;
+        }catch (InputMismatchException ex){
+            System.out.println("Podałeś zły znak, tylko liczby!");
+        }
     }
 }
