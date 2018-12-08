@@ -2,51 +2,53 @@ import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class Program {
-    public static double result = 0;
+    public static double firstNumber = 0;
+    public static double secondNumber = 0;
     public static void main(String [] args){
 
-        String info = "\n\nCo chcesz zrobić; \nDodawać? Wpisz 1\nOdejmować? Wpisz 2\nMnożyć? Wpisz 3\nDzielić? Wpisz 4\n"+
-                "Potęgować? Wpisz 5\n Wyjść z programu? Wciśnij cyfrę od 6 do 9 lub 0";
-
-        String info2 = "\nAby liczyć, wpisz 1, inny wybór to wyjście z programu.";
+        String info = "\nMożliwe działania: + , - , * , / , ^";
 
         Scanner input = new Scanner(System.in);
 
         boolean error = true;
-        System.out.println(info2);
-
+        System.out.println("Pierwsza liczba:");
+        firstNumber = input.nextDouble();
         while (error) {
             System.out.println(info);
             try {
-                switch (input.nextInt()) {
-                    case 1:
+                switch (input.next()) {
+                    case "+":
+                        System.out.println("Drugi składnik sumy: ");
+                        secondNumber = input.nextDouble();
                         Addition addition = new Addition();
-                        addition.add();
+                        addition.add(firstNumber, secondNumber);
                         break;
-                    case 2:
+                    case "-":
+                        System.out.println("Odjemnik: ");
+                        secondNumber = input.nextDouble();
                         Subtraction subtraction = new Subtraction();
-                        subtraction.sub();
+                        subtraction.sub(firstNumber,secondNumber);
                         break;
-                    case 3:
+                    case "*":
+                        System.out.println("Czynnik mnożenia: ");
+                        secondNumber = input.nextDouble();
                         Multiplication multiplication = new Multiplication();
-                        multiplication.multi();
+                        multiplication.multi(firstNumber , secondNumber);
                         break;
-                    case 4:
+                    case "/":
+                        System.out.println("Dzielnik: ");
+                        secondNumber = input.nextDouble();
                         Division division = new Division();
-                        division.div();
+                        division.div(firstNumber , secondNumber);
                         break;
-                    case 5:
+                    case "^":
+                        System.out.println("Wykładnik potęgi: ");
+                        secondNumber = input.nextDouble();
                         Exponentiation exponentiation = new Exponentiation();
-                        exponentiation.exp();
-                        break;
+                        exponentiation.exp(firstNumber , secondNumber);
                 }
-                System.out.println(info2);
-                if(input.nextInt() == 1) {
-                    error = true;
-                }
-                else{
-                    error = false;
-                }
+                System.out.println("Wynik: " + firstNumber);
+                // i teraz nie wiedzieć czemu opcja "catch" nie działa
             }catch(InputMismatchException ex){
                 System.out.println("Podałeś zły znak, spróbuj jeszcze raz!");
             }
