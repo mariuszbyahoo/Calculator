@@ -6,7 +6,7 @@ public class Program {
     public static double secondNumber = 0;
     public static void main(String [] args){
 
-        String info = "\nMożliwe działania: + , - , * , / , ^";
+        String info = "\nMożliwe działania: + , - , * , / , ^, po wpisaniu wielkiego 'C' nastąpi wyzerowanie kalkulatora";
 
         Scanner input = new Scanner(System.in);
 
@@ -50,9 +50,17 @@ public class Program {
                         secondNumber = input.nextDouble();
                         Exponentiation exponentiation = new Exponentiation();
                         exponentiation.exp(firstNumber , secondNumber);
+                        break;
+                    case "C":
+                        ResetCalc resetCalc = new ResetCalc();
+                        resetCalc.reset();
+                        System.out.println("Podaj pierwszą liczbę: ");
+                        Program.firstNumber = input.nextDouble();
+                        break;
+                    default:
+                        System.out.println("Podaj znak równania");
+                        break;
                 }
-                System.out.println("Wynik: " + firstNumber);
-                // i teraz nie wiedzieć czemu opcja "catch" nie działa
             }catch(InputMismatchException ex){
                 System.out.println("Podałeś zły znak, spróbuj jeszcze raz!");
             }
