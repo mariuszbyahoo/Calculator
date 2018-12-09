@@ -12,11 +12,15 @@ public class Program {
 
         boolean error = true;
         System.out.println("Pierwsza liczba:");
-        firstNumber = input.nextDouble();
+        try {
+            firstNumber = input.nextDouble();
+        }catch (InputMismatchException ex){
+            System.out.println("Podałeś zły znak, jeszcze raz!");
+        }
+        System.out.println(info);
         while (error) {
-            System.out.println(info);
             try {
-                switch (input.next()) {
+                switch (input.nextLine()) {
                     case "+":
                         System.out.println("Drugi składnik sumy: ");
                         secondNumber = input.nextDouble();
