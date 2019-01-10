@@ -6,9 +6,9 @@ public class Subtraction {
         try {
             firstNumber = firstNumber.subtract(secondNumber);
             Program.firstNumber = firstNumber;
-            System.out.println("Wynik: " + firstNumber);
+            System.out.println("Result: " + firstNumber);
         }catch (InputMismatchException ex){
-            System.out.println("Podałeś zły znak, tylko liczby!");
+            System.out.println("You gave a wrong character, it must be a number!");
         }
     }
 }

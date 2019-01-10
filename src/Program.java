@@ -2,52 +2,56 @@ import java.math.BigDecimal;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
+/**
+ *  first project, needs more OOP 
+ */
+
 public class Program {
     public static BigDecimal firstNumber = BigDecimal.valueOf(0);
     public static BigDecimal secondNumber = BigDecimal.valueOf(0);
     public static void main(String [] args) {
 
-        String info = "\nMozliwe dzialania: + , - , * , / , ^, po wpisaniu wielkiego 'C' nastapi wyzerowanie kalkulatora";
+        String info = "\nPossible options: + , - , * , / , ^, after applying 'C' the calculator will be restarted.";
 
         Scanner input = new Scanner(System.in);
 
         boolean error = true;
-        System.out.println("Pierwsza liczba:");
+        System.out.println("First number:");
             try {
                 firstNumber = BigDecimal.valueOf(input.nextDouble());
             } catch (InputMismatchException ex) {
-                System.out.println("Podałes zly znak, Podaj dowolna liczbę!");
+                System.out.println("You gave a wrong character, it must be a number!");
             }
         System.out.println(info);
         while (error) {
             try {
                 switch (input.nextLine()) {
                     case "+":
-                        System.out.println("Drugi skladnik sumy: ");
+                        System.out.println("Second element: ");
                         secondNumber = BigDecimal.valueOf(input.nextDouble());
                         Addition addition = new Addition();
                         addition.add(firstNumber, secondNumber);
                         break;
                     case "-":
-                        System.out.println("Odjemnik: ");
+                        System.out.println("Subtrahend: ");
                         secondNumber = BigDecimal.valueOf(input.nextDouble());
                         Subtraction subtraction = new Subtraction();
                         subtraction.sub(firstNumber,secondNumber);
                         break;
                     case "*":
-                        System.out.println("Czynnik mnozenia: ");
+                        System.out.println("Multiplying factor: ");
                         secondNumber = BigDecimal.valueOf(input.nextDouble());
                         Multiplication multiplication = new Multiplication();
                         multiplication.multi(firstNumber , secondNumber);
                         break;
                     case "/":
-                        System.out.println("Dzielnik: ");
+                        System.out.println("Divisor: ");
                         secondNumber = BigDecimal.valueOf(input.nextDouble());
                         Division division = new Division();
                         division.div(firstNumber , secondNumber);
                         break;
                     case "^":
-                        System.out.println("Wykładnik potegi: ");
+                        System.out.println("Exponentiation index: ");
                         secondNumber = BigDecimal.valueOf(input.nextDouble());
                         Exponentiation exponentiation = new Exponentiation();
                         exponentiation.exp(firstNumber , secondNumber);
@@ -55,15 +59,15 @@ public class Program {
                     case "C":
                         ResetCalc resetCalc = new ResetCalc();
                         resetCalc.reset();
-                        System.out.println("Podaj pierwsza liczbe: ");
+                        System.out.println("First number: ");
                         Program.firstNumber = BigDecimal.valueOf(input.nextDouble());
                         break;
                     default:
-                        System.out.println("Podaj znak dzialania");
+                        System.out.println("Wrong Character, select the Operation's character: + , - , * , / , ^ or 'C'");
                         break;
                 }
             }catch(InputMismatchException ex){
-                System.out.println("Podałes zly znak, sprobuj jeszcze raz!");
+                System.out.println("You gave a wrong character, one more time!");
             }
         }
         input.close();

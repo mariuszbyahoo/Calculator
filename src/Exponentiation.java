@@ -10,9 +10,9 @@ public class Exponentiation {
                 result = result.multiply(firstNumber);
             }
             Program.firstNumber = result;
-            System.out.println(result);
+            System.out.println("Result: " + result);
         }catch (InputMismatchException ex){
-            System.out.println("Zły znak, tylko liczby!");
+            System.out.println("You gave a wrong character, it must be a number!");
         }
     }
 }

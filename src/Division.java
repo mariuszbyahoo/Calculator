@@ -6,9 +6,9 @@ public class Division {
         try {
             firstNumber = firstNumber.divide(secondNumber);
             Program.firstNumber = firstNumber;
-            System.out.println("Wynik: " + firstNumber);
+            System.out.println("Result: " + firstNumber);
         }catch (InputMismatchException ex){
-            System.out.println("Zły znak, tylko liczby!");
+            System.out.println("You gave a wrong character, it must be a number!");
         }
     }
 }

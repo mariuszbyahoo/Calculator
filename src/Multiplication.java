@@ -6,7 +6,7 @@ public class Multiplication {
         try {
             firstNumber = firstNumber.multiply(secondNumber);
             Program.firstNumber = firstNumber;
-            System.out.println("Wynik: " + firstNumber);
+            System.out.println("Result: " + firstNumber);
         }catch (InputMismatchException ex){
             System.out.println("Podałeś zły znak, tylko liczby!");
         }
