@@ -10,7 +10,7 @@ public class Program {
     public static BigDecimal firstNumber = BigDecimal.valueOf(0);
     public static BigDecimal secondNumber = BigDecimal.valueOf(0);
     public static void main(String [] args) {
-
+        View.createGUI();
         String info = "\nPossible options: + , - , * , / , ^, after applying 'C' the calculator will be restarted.";
 
         Scanner input = new Scanner(System.in);
