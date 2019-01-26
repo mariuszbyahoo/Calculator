@@ -133,6 +133,7 @@ public class ButtonPanel extends JMenuBar implements ActionListener {
         View.textArea.append(Program.secondNumber.toString() + "\n=\n");
         addition.add(Program.firstNumber, Program.secondNumber);
         View.textArea.append(Program.firstNumber.toString() + "\n");
+        View.textField.setText(Program.firstNumber.toString());
     }
 
     private void subtraction(DecimalFormat nf) {
@@ -142,6 +143,7 @@ public class ButtonPanel extends JMenuBar implements ActionListener {
         View.textArea.append(Program.secondNumber.toString() + "\n=\n");
         subtraction.sub(Program.firstNumber, Program.secondNumber);
         View.textArea.append(Program.firstNumber.toString() + "\n");
+        View.textField.setText(Program.firstNumber.toString());
     }
 
     private void multiplication(DecimalFormat nf) {
@@ -151,6 +153,7 @@ public class ButtonPanel extends JMenuBar implements ActionListener {
         View.textArea.append(Program.secondNumber.toString() + "\n=\n");
         multiplication.multi(Program.firstNumber, Program.secondNumber);
         View.textArea.append(Program.firstNumber.toString() + "\n");
+        View.textField.setText(Program.firstNumber.toString());
     }
 
     private void division(DecimalFormat nf) {
@@ -160,6 +163,7 @@ public class ButtonPanel extends JMenuBar implements ActionListener {
         View.textArea.append(Program.secondNumber.toString() + "\n=\n");
         division.div(Program.firstNumber, Program.secondNumber);
         View.textArea.append(Program.firstNumber.toString() + "\n");
+        View.textField.setText(Program.firstNumber.toString());
     }
 
     private void exponentiation(DecimalFormat nf) {
@@ -169,6 +173,7 @@ public class ButtonPanel extends JMenuBar implements ActionListener {
         View.textArea.append(Program.secondNumber.toString() + "\n=\n");
         exponentiation.exp(Program.firstNumber, Program.secondNumber);
         View.textArea.append(Program.firstNumber.toString() + "\n");
+        View.textField.setText(Program.firstNumber.toString());
     }
 
     private void resetCalc() {
