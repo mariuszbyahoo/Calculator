@@ -6,15 +6,9 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class View extends JPanel implements ActionListener {
-    JTextField textField;
-    JTextArea textArea;
-    JButton addButton = new JButton("+");
-    JButton subButton = new JButton("-");
-    JButton multiButton = new JButton("*");
-    JButton divButton = new JButton("/");
-    JButton cButton = new JButton("C");
-    JButton resultButton = new JButton("=");
-    JFrame frame = new JFrame("Calculator");
+    static JTextField textField;
+    static JTextArea textArea;
+    static JFrame frame = new JFrame("Calculator");
     String newLine = "\n";
 
     public View() {
@@ -28,15 +22,6 @@ public class View extends JPanel implements ActionListener {
         frame.add(scrollPane, BorderLayout.EAST);
     }
 
-    public void addButtons(JMenuBar menuBar) {
-        menuBar.add(addButton);
-        menuBar.add(subButton);
-        menuBar.add(multiButton);
-        menuBar.add(divButton);
-        menuBar.add(cButton);
-        menuBar.add(resultButton);
-    }
-
     @Override
     public void actionPerformed(ActionEvent e) {
         String text = textField.getText();
@@ -47,12 +32,10 @@ public class View extends JPanel implements ActionListener {
     }
 
     public void createAndShowGUI() {
-        JMenuBar menuBar = new JMenuBar();
-        menuBar.setBorderPainted(true);
-        menuBar.setPreferredSize(new Dimension(100, 20));
+        ButtonPanel buttonPanel = new ButtonPanel();
+
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setJMenuBar(menuBar);
-        addButtons(menuBar);
+        frame.setJMenuBar(buttonPanel);
 
         frame.add(new View());
 
