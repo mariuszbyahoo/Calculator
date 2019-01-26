@@ -1,6 +1,7 @@
 package View;
 
 import App.Program;
+import Actions.Addition;
 
 import javax.swing.*;
 import java.awt.*;
@@ -14,8 +15,8 @@ import java.text.ParsePosition;
 public class ButtonPanel extends JMenuBar implements ActionListener {
     private static final int HEIGHT = 50;
     private static final int WIDTH = 100;
-    private String txt;
-    private Double parsedNumber;
+    private String numberOne;
+    private String numberTwo;
     private JButton addButton;
     private JButton subButton;
     private JButton multiButton;
@@ -23,6 +24,7 @@ public class ButtonPanel extends JMenuBar implements ActionListener {
     private JButton expButton;
     private JButton cButton;
     private JButton equalsButton;
+    DecimalFormat nf = (DecimalFormat) NumberFormat.getInstance();
 
     public ButtonPanel() {
         addButton = new JButton("+");
@@ -64,32 +66,49 @@ public class ButtonPanel extends JMenuBar implements ActionListener {
         Object source = e.getSource();
 
         if (source == addButton) {
-            txt = View.textField.getText();
+            numberOne = View.textField.getText();
+            View.textField.setText(null);
 
-            DecimalFormat nf = (DecimalFormat) NumberFormat.getInstance();
             nf.setParseBigDecimal(true);
-
-            Program.firstNumber = (BigDecimal) nf.parse(txt, new ParsePosition(0));
-
+            Program.firstNumber = (BigDecimal) nf.parse(numberOne, new ParsePosition(0));
             View.textArea.append(Program.firstNumber.toString() + "\n+\n");
-        }
-        if (source == subButton) {
+            View.action = Action.ADD;
+        } else if (source == subButton) {
 
-        }
-        if (source == multiButton) {
+        } else if (source == multiButton) {
 
-        }
-        if (source == divButton) {
+        } else if (source == divButton) {
 
-        }
-        if (source == expButton) {
+        } else if (source == expButton) {
 
-        }
-        if (source == cButton) {
+        } else if (source == cButton) {
 
-        }
-        if (source == equalsButton) {
+        } else if (source == equalsButton) {
+            if (View.action != null && !View.textField.equals(null)) {
+                switch (View.action) {
+                    case ADD:
+                        addition(nf);
+                        break;
+                    case SUB:
 
+                    case MULTI:
+
+                    case DIV:
+
+                    case EXP:
+
+                    case C:
+                }
+            }
         }
+    }
+
+    private void addition(DecimalFormat nf) {
+        numberTwo = View.textField.getText();
+        Addition addition = new Addition();
+        Program.secondNumber = (BigDecimal) nf.parse(numberTwo, new ParsePosition(0));
+        View.textArea.append(Program.secondNumber.toString() + "\n=\n");
+        addition.add(Program.firstNumber, Program.secondNumber);
+        View.textArea.append(Program.firstNumber.toString() + "\n");
     }
 }

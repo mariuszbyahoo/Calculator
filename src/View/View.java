@@ -8,11 +8,12 @@ import java.awt.event.ActionListener;
 public class View extends JPanel implements ActionListener {
     static JTextField textField;
     static JTextArea textArea;
+    static Action action;
     static JFrame frame = new JFrame("Calculator");
     String newLine = "\n";
 
     public View() {
-        textField = new JTextField("Parse here", 10);
+        textField = new JTextField(10);
         textField.addActionListener(this);
 
         textArea = new JTextArea("Here's the result: \n", 5, 20);
