@@ -1,6 +1,7 @@
 package View;
 
 import javax.swing.*;
+import javax.swing.text.Document;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -21,6 +22,7 @@ public class View extends JPanel implements ActionListener {
         JScrollPane scrollPane = new JScrollPane(textArea);
         frame.add(textField, BorderLayout.WEST);
         frame.add(scrollPane, BorderLayout.EAST);
+        textArea.setCaretPosition(textArea.getDocument().getLength());
     }
 
     @Override

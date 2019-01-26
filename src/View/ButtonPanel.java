@@ -1,7 +1,7 @@
 package View;
 
+import Actions.*;
 import App.Program;
-import Actions.Addition;
 
 import javax.swing.*;
 import java.awt.*;
@@ -56,11 +56,6 @@ public class ButtonPanel extends JMenuBar implements ActionListener {
 
     }
 
-    /**
-     * Metoda działa; przechodzi przez Program.firstNumber i teraz trzeba zrobić dalej, tak by wywoływała metody już z pakietu Actions.
-     *
-     * @param e
-     */
     @Override
     public void actionPerformed(ActionEvent e) {
         Object source = e.getSource();
@@ -74,15 +69,40 @@ public class ButtonPanel extends JMenuBar implements ActionListener {
             View.textArea.append(Program.firstNumber.toString() + "\n+\n");
             View.action = Action.ADD;
         } else if (source == subButton) {
+            numberOne = View.textField.getText();
+            View.textField.setText(null);
 
+            nf.setParseBigDecimal(true);
+            Program.firstNumber = (BigDecimal) nf.parse(numberOne, new ParsePosition(0));
+            View.textArea.append(Program.firstNumber.toString() + "\n-\n");
+            View.action = Action.SUB;
         } else if (source == multiButton) {
+            numberOne = View.textField.getText();
+            View.textField.setText(null);
 
+            nf.setParseBigDecimal(true);
+            Program.firstNumber = (BigDecimal) nf.parse(numberOne, new ParsePosition(0));
+            View.textArea.append(Program.firstNumber.toString() + "\n*\n");
+            View.action = Action.MULTI;
         } else if (source == divButton) {
+            numberOne = View.textField.getText();
+            View.textField.setText(null);
 
+            nf.setParseBigDecimal(true);
+            Program.firstNumber = (BigDecimal) nf.parse(numberOne, new ParsePosition(0));
+            View.textArea.append(Program.firstNumber.toString() + "\n/\n");
+            View.action = Action.DIV;
         } else if (source == expButton) {
+            numberOne = View.textField.getText();
+            View.textField.setText(null);
+
+            nf.setParseBigDecimal(true);
+            Program.firstNumber = (BigDecimal) nf.parse(numberOne, new ParsePosition(0));
+            View.textArea.append(Program.firstNumber.toString() + "\n^\n");
+            View.action = Action.EXP;
 
         } else if (source == cButton) {
-
+            resetCalc();
         } else if (source == equalsButton) {
             if (View.action != null && !View.textField.equals(null)) {
                 switch (View.action) {
@@ -90,14 +110,17 @@ public class ButtonPanel extends JMenuBar implements ActionListener {
                         addition(nf);
                         break;
                     case SUB:
-
+                        subtraction(nf);
+                        break;
                     case MULTI:
-
+                        multiplication(nf);
+                        break;
                     case DIV:
-
+                        division(nf);
+                        break;
                     case EXP:
-
-                    case C:
+                        exponentiation(nf);
+                        break;
                 }
             }
         }
@@ -110,5 +133,51 @@ public class ButtonPanel extends JMenuBar implements ActionListener {
         View.textArea.append(Program.secondNumber.toString() + "\n=\n");
         addition.add(Program.firstNumber, Program.secondNumber);
         View.textArea.append(Program.firstNumber.toString() + "\n");
+    }
+
+    private void subtraction(DecimalFormat nf) {
+        numberTwo = View.textField.getText();
+        Subtraction subtraction = new Subtraction();
+        Program.secondNumber = (BigDecimal) nf.parse(numberTwo, new ParsePosition(0));
+        View.textArea.append(Program.secondNumber.toString() + "\n=\n");
+        subtraction.sub(Program.firstNumber, Program.secondNumber);
+        View.textArea.append(Program.firstNumber.toString() + "\n");
+    }
+
+    private void multiplication(DecimalFormat nf) {
+        numberTwo = View.textField.getText();
+        Multiplication multiplication = new Multiplication();
+        Program.secondNumber = (BigDecimal) nf.parse(numberTwo, new ParsePosition(0));
+        View.textArea.append(Program.secondNumber.toString() + "\n=\n");
+        multiplication.multi(Program.firstNumber, Program.secondNumber);
+        View.textArea.append(Program.firstNumber.toString() + "\n");
+    }
+
+    private void division(DecimalFormat nf) {
+        numberTwo = View.textField.getText();
+        Division division = new Division();
+        Program.secondNumber = (BigDecimal) nf.parse(numberTwo, new ParsePosition(0));
+        View.textArea.append(Program.secondNumber.toString() + "\n=\n");
+        division.div(Program.firstNumber, Program.secondNumber);
+        View.textArea.append(Program.firstNumber.toString() + "\n");
+    }
+
+    private void exponentiation(DecimalFormat nf) {
+        numberTwo = View.textField.getText();
+        Exponentiation exponentiation = new Exponentiation();
+        Program.secondNumber = (BigDecimal) nf.parse(numberTwo, new ParsePosition(0));
+        View.textArea.append(Program.secondNumber.toString() + "\n=\n");
+        exponentiation.exp(Program.firstNumber, Program.secondNumber);
+        View.textArea.append(Program.firstNumber.toString() + "\n");
+    }
+
+    private void resetCalc() {
+        numberOne = null;
+        numberTwo = null;
+        Program.firstNumber = null;
+        Program.secondNumber = null;
+        View.textArea.setText("");
+        View.textField.setText("");
+
     }
 }
