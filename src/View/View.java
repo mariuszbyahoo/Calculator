@@ -1,14 +1,14 @@
 package View;
 
+
 import javax.swing.*;
-import javax.swing.text.Document;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class View extends JPanel implements ActionListener {
-    static JTextField textField;
-    static JTextArea textArea;
+    public static JTextField textField;
+    public static JTextArea textArea;
     static Action action;
     static JFrame frame = new JFrame("Calculator");
     String newLine = "\n";
@@ -17,7 +17,7 @@ public class View extends JPanel implements ActionListener {
         textField = new JTextField(10);
         textField.addActionListener(this);
 
-        textArea = new JTextArea("Here's the result: \n", 5, 20);
+        textArea = new JTextArea("Here's the result: \n", 3, 10);
         textArea.setEditable(false);
         JScrollPane scrollPane = new JScrollPane(textArea);
         frame.add(textField, BorderLayout.WEST);

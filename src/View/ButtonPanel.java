@@ -1,6 +1,5 @@
 package View;
 
-import Actions.*;
 import App.Program;
 
 import javax.swing.*;
@@ -13,7 +12,7 @@ import java.text.NumberFormat;
 import java.text.ParsePosition;
 
 public class ButtonPanel extends JMenuBar implements ActionListener {
-    private static final int HEIGHT = 50;
+    private static final int HEIGHT = 75;
     private static final int WIDTH = 100;
     private String numberOne;
     private String numberTwo;
@@ -139,62 +138,32 @@ public class ButtonPanel extends JMenuBar implements ActionListener {
      * @param nf
      */
     private void addition(DecimalFormat nf) {
-        numberTwo = View.textField.getText();
-        Addition addition = new Addition();
-        Program.secondNumber = (BigDecimal) nf.parse(numberTwo, new ParsePosition(0));
-        View.textArea.append(Program.secondNumber.toString() + "\n=\n");
-        addition.add(Program.firstNumber, Program.secondNumber);
-        View.textArea.append(Program.firstNumber.toString() + "\n");
-        View.textField.setText(Program.firstNumber.toString());
+        AddLogic addLogic = new AddLogic();
+        addLogic.action(nf, numberTwo);
     }
 
     private void subtraction(DecimalFormat nf) {
-        numberTwo = View.textField.getText();
-        Subtraction subtraction = new Subtraction();
-        Program.secondNumber = (BigDecimal) nf.parse(numberTwo, new ParsePosition(0));
-        View.textArea.append(Program.secondNumber.toString() + "\n=\n");
-        subtraction.sub(Program.firstNumber, Program.secondNumber);
-        View.textArea.append(Program.firstNumber.toString() + "\n");
-        View.textField.setText(Program.firstNumber.toString());
+        SubLogic subLogic = new SubLogic();
+        subLogic.action(nf, numberTwo);
     }
 
     private void multiplication(DecimalFormat nf) {
-        numberTwo = View.textField.getText();
-        Multiplication multiplication = new Multiplication();
-        Program.secondNumber = (BigDecimal) nf.parse(numberTwo, new ParsePosition(0));
-        View.textArea.append(Program.secondNumber.toString() + "\n=\n");
-        multiplication.multi(Program.firstNumber, Program.secondNumber);
-        View.textArea.append(Program.firstNumber.toString() + "\n");
-        View.textField.setText(Program.firstNumber.toString());
+        MultiLogic multiLogic = new MultiLogic();
+        multiLogic.action(nf, numberTwo);
     }
 
     private void division(DecimalFormat nf) {
-        numberTwo = View.textField.getText();
-        Division division = new Division();
-        Program.secondNumber = (BigDecimal) nf.parse(numberTwo, new ParsePosition(0));
-        View.textArea.append(Program.secondNumber.toString() + "\n=\n");
-        division.div(Program.firstNumber, Program.secondNumber);
-        View.textArea.append(Program.firstNumber.toString() + "\n");
-        View.textField.setText(Program.firstNumber.toString());
+        DivLogic divLogic = new DivLogic();
+        divLogic.action(nf, numberTwo);
     }
 
     private void exponentiation(DecimalFormat nf) {
-        numberTwo = View.textField.getText();
-        Exponentiation exponentiation = new Exponentiation();
-        Program.secondNumber = (BigDecimal) nf.parse(numberTwo, new ParsePosition(0));
-        View.textArea.append(Program.secondNumber.toString() + "\n=\n");
-        exponentiation.exp(Program.firstNumber, Program.secondNumber);
-        View.textArea.append(Program.firstNumber.toString() + "\n");
-        View.textField.setText(Program.firstNumber.toString());
+        ExpLogic expLogic = new ExpLogic();
+        expLogic.action(nf, numberTwo);
     }
 
     private void resetCalc() {
-        numberOne = null;
-        numberTwo = null;
-        Program.firstNumber = null;
-        Program.secondNumber = null;
-        View.textArea.setText("");
-        View.textField.setText("");
+
 
     }
 }
