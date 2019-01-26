@@ -16,7 +16,8 @@ public class Program {
     public static BigDecimal secondNumber = BigDecimal.valueOf(0);
 
     public static void main(String [] args) {
-        View.createGUI();
+        View view = new View();
+        view.run();
         String info = "\nPossible options: + , - , * , / , ^, after applying 'C' the calculator will be restarted.";
 
         Scanner input = new Scanner(System.in);
@@ -57,7 +58,7 @@ public class Program {
                         division.div(firstNumber , secondNumber);
                         break;
                     case "^":
-                        System.out.println("Actions.Exponentiation index: ");
+                        System.out.println("Exponentiation index: ");
                         secondNumber = BigDecimal.valueOf(input.nextDouble());
                         Exponentiation exponentiation = new Exponentiation();
                         exponentiation.exp(firstNumber , secondNumber);

@@ -2,52 +2,69 @@ package View;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
-public class View {
-    /**
-     * Dobra teraz potrzebuję przejść do tego by zrobić output i aplikacja mogła odczytywać input z
-     * textField i parsować do JTextArea po prawej stronie. Tam będzie wynik równania.
-     */
-    public static void createGUI() {
-        JFrame frame = new JFrame("Calculator MBudzisz");
+public class View extends JPanel implements ActionListener {
+    JTextField textField;
+    JTextArea textArea;
+    JButton addButton = new JButton("+");
+    JButton subButton = new JButton("-");
+    JButton multiButton = new JButton("*");
+    JButton divButton = new JButton("/");
+    JButton cButton = new JButton("C");
+    JButton resultButton = new JButton("=");
+    JFrame frame = new JFrame("Calculator");
+    String newLine = "\n";
+
+    public View() {
+        textField = new JTextField("Parse here", 10);
+        textField.addActionListener(this);
+
+        textArea = new JTextArea("Here's the result: \n", 5, 20);
+        textArea.setEditable(false);
+        JScrollPane scrollPane = new JScrollPane(textArea);
+        frame.add(textField, BorderLayout.WEST);
+        frame.add(scrollPane, BorderLayout.EAST);
+    }
+
+    public void addButtons(JMenuBar menuBar) {
+        menuBar.add(addButton);
+        menuBar.add(subButton);
+        menuBar.add(multiButton);
+        menuBar.add(divButton);
+        menuBar.add(cButton);
+        menuBar.add(resultButton);
+    }
+
+    @Override
+    public void actionPerformed(ActionEvent e) {
+        String text = textField.getText();
+        textArea.append(text + newLine);
+        textField.selectAll();
+
+        textArea.setCaretPosition(textArea.getDocument().getLength());
+    }
+
+    public void createAndShowGUI() {
         JMenuBar menuBar = new JMenuBar();
-        JButton add = new JButton("+");
-        JButton sub = new JButton("-");
-        JButton multi = new JButton("*");
-        JButton div = new JButton("/");
-        JButton exp = new JButton("^");
-        JButton reset = new JButton("C");
-        JTextField textField = new JTextField(30);
-
-        JLabel yellowLabel = new JLabel();
-
+        menuBar.setBorderPainted(true);
+        menuBar.setPreferredSize(new Dimension(100, 20));
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setJMenuBar(menuBar);
-        setMenuBar(menuBar, add, sub, multi, div, exp, reset);
-        setYellowLabel(yellowLabel, frame, textField);
-        frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+        addButtons(menuBar);
+
+        frame.add(new View());
 
         frame.pack();
         frame.setVisible(true);
     }
 
-    private static void setMenuBar(JMenuBar menuBar, JButton add, JButton sub, JButton multi, JButton div, JButton exp,
-                                   JButton reset) {
-        menuBar.setOpaque(true);
-        menuBar.setBackground(new Color(27, 179, 179));
-        menuBar.setPreferredSize(new Dimension(100, 22));
-        menuBar.add(add, BorderLayout.LINE_START);
-        menuBar.add(sub, BorderLayout.EAST);
-        menuBar.add(multi, BorderLayout.EAST);
-        menuBar.add(div, BorderLayout.EAST);
-        menuBar.add(exp, BorderLayout.EAST);
-        menuBar.add(reset, BorderLayout.EAST);
-    }
-
-    private static void setYellowLabel(JLabel yellowLabel, JFrame frame, JTextField textField) {
-        frame.getContentPane().add(yellowLabel, BorderLayout.CENTER);
-        frame.getContentPane().add(textField, BorderLayout.LINE_START);
-        yellowLabel.setOpaque(true);
-        yellowLabel.setBackground(new Color(238, 244, 7));
-        yellowLabel.setPreferredSize(new Dimension(400, 180));
+    public void run() {
+        javax.swing.SwingUtilities.invokeLater(new Runnable() {
+            public void run() {
+                createAndShowGUI();
+            }
+        });
     }
 }
