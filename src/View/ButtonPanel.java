@@ -26,6 +26,9 @@ public class ButtonPanel extends JMenuBar implements ActionListener {
     private JButton equalsButton;
     DecimalFormat nf = (DecimalFormat) NumberFormat.getInstance();
 
+    /**
+     * In the ButtonPanel() method we are creating all of the buttons, and set them.
+     */
     public ButtonPanel() {
         addButton = new JButton("+");
         subButton = new JButton("-");
@@ -56,6 +59,11 @@ public class ButtonPanel extends JMenuBar implements ActionListener {
 
     }
 
+    /**
+     * This method is deciding, which class from the Actions package will be used. It changes the value of the Action enum.
+     *
+     * @param e
+     */
     @Override
     public void actionPerformed(ActionEvent e) {
         Object source = e.getSource();
@@ -126,6 +134,10 @@ public class ButtonPanel extends JMenuBar implements ActionListener {
         }
     }
 
+    /**
+     * Here are the main logic of the GUI's work. It communicates with the App.Program variables and then parses the result of a calculation.
+     * @param nf
+     */
     private void addition(DecimalFormat nf) {
         numberTwo = View.textField.getText();
         Addition addition = new Addition();
