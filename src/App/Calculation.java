@@ -7,15 +7,11 @@ import java.math.BigDecimal;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
-/**
- *  first project, needs more OOP 
- */
-
-public class Program {
+public class Calculation {
     public static BigDecimal firstNumber = BigDecimal.valueOf(0);
     public static BigDecimal secondNumber = BigDecimal.valueOf(0);
 
-    public static void main(String [] args) {
+    public void calculate() {
         View view = new View();
         view.run();
         String info = "\nPossible options: + , - , * , / , ^, after applying 'C' the calculator will be restarted.";
@@ -67,7 +63,7 @@ public class Program {
                         ResetCalc resetCalc = new ResetCalc();
                         resetCalc.reset();
                         System.out.println("First number: ");
-                        Program.firstNumber = BigDecimal.valueOf(input.nextDouble());
+                        Calculation.firstNumber = BigDecimal.valueOf(input.nextDouble());
                         break;
                     default:
                         System.out.println("Wrong Character, select the Operation's character: + , - , * , / , ^ or 'C'");

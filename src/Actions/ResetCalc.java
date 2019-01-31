@@ -1,14 +1,14 @@
 package Actions;
 
-import App.Program;
+import App.Calculation;
 
 import java.math.BigDecimal;
 
 public class ResetCalc {
     public void reset(){
-        Program.firstNumber = BigDecimal.valueOf(0);
-        Program.secondNumber = BigDecimal.valueOf(0);
+        Calculation.firstNumber = BigDecimal.valueOf(0);
+        Calculation.secondNumber = BigDecimal.valueOf(0);
         System.out.println("Calc has been restarted: ");
-        System.out.println(Program.firstNumber);
+        System.out.println(Calculation.firstNumber);
     }
 }

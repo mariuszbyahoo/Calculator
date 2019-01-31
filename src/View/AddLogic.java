@@ -1,7 +1,7 @@
 package View;
 
 import Actions.Addition;
-import App.Program;
+import App.Calculation;
 
 import java.math.BigDecimal;
 import java.text.DecimalFormat;
@@ -12,10 +12,10 @@ public class AddLogic extends ActionLogic {
     public void action(DecimalFormat nf, String numberTwo) {
         numberTwo = View.textField.getText();
         Addition addition = new Addition();
-        Program.secondNumber = (BigDecimal) nf.parse(numberTwo, new ParsePosition(0));
-        View.textArea.append(Program.secondNumber.toString() + "\n=\n");
-        addition.add(Program.firstNumber, Program.secondNumber);
-        View.textArea.append(Program.firstNumber.toString() + "\n");
-        View.textField.setText(Program.firstNumber.toString());
+        Calculation.secondNumber = (BigDecimal) nf.parse(numberTwo, new ParsePosition(0));
+        View.textArea.append(Calculation.secondNumber.toString() + "\n=\n");
+        addition.add(Calculation.firstNumber, Calculation.secondNumber);
+        View.textArea.append(Calculation.firstNumber.toString() + "\n");
+        View.textField.setText(Calculation.firstNumber.toString());
     }
 }

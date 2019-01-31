@@ -1,6 +1,6 @@
 package View;
 
-import App.Program;
+import App.Calculation;
 
 import javax.swing.*;
 import java.awt.*;
@@ -72,40 +72,40 @@ public class ButtonPanel extends JMenuBar implements ActionListener {
             View.textField.setText(null);
 
             nf.setParseBigDecimal(true);
-            Program.firstNumber = (BigDecimal) nf.parse(numberOne, new ParsePosition(0));
-            View.textArea.append(Program.firstNumber.toString() + "\n+\n");
+            Calculation.firstNumber = (BigDecimal) nf.parse(numberOne, new ParsePosition(0));
+            View.textArea.append(Calculation.firstNumber.toString() + "\n+\n");
             View.action = Action.ADD;
         } else if (source == subButton) {
             numberOne = View.textField.getText();
             View.textField.setText(null);
 
             nf.setParseBigDecimal(true);
-            Program.firstNumber = (BigDecimal) nf.parse(numberOne, new ParsePosition(0));
-            View.textArea.append(Program.firstNumber.toString() + "\n-\n");
+            Calculation.firstNumber = (BigDecimal) nf.parse(numberOne, new ParsePosition(0));
+            View.textArea.append(Calculation.firstNumber.toString() + "\n-\n");
             View.action = Action.SUB;
         } else if (source == multiButton) {
             numberOne = View.textField.getText();
             View.textField.setText(null);
 
             nf.setParseBigDecimal(true);
-            Program.firstNumber = (BigDecimal) nf.parse(numberOne, new ParsePosition(0));
-            View.textArea.append(Program.firstNumber.toString() + "\n*\n");
+            Calculation.firstNumber = (BigDecimal) nf.parse(numberOne, new ParsePosition(0));
+            View.textArea.append(Calculation.firstNumber.toString() + "\n*\n");
             View.action = Action.MULTI;
         } else if (source == divButton) {
             numberOne = View.textField.getText();
             View.textField.setText(null);
 
             nf.setParseBigDecimal(true);
-            Program.firstNumber = (BigDecimal) nf.parse(numberOne, new ParsePosition(0));
-            View.textArea.append(Program.firstNumber.toString() + "\n/\n");
+            Calculation.firstNumber = (BigDecimal) nf.parse(numberOne, new ParsePosition(0));
+            View.textArea.append(Calculation.firstNumber.toString() + "\n/\n");
             View.action = Action.DIV;
         } else if (source == expButton) {
             numberOne = View.textField.getText();
             View.textField.setText(null);
 
             nf.setParseBigDecimal(true);
-            Program.firstNumber = (BigDecimal) nf.parse(numberOne, new ParsePosition(0));
-            View.textArea.append(Program.firstNumber.toString() + "\n^\n");
+            Calculation.firstNumber = (BigDecimal) nf.parse(numberOne, new ParsePosition(0));
+            View.textArea.append(Calculation.firstNumber.toString() + "\n^\n");
             View.action = Action.EXP;
 
         } else if (source == cButton) {
@@ -134,7 +134,7 @@ public class ButtonPanel extends JMenuBar implements ActionListener {
     }
 
     /**
-     * Here are the main logic of the GUI's work. It communicates with the App.Program variables and then parses the result of a calculation.
+     * Here are the main logic of the GUI's work. It communicates with the App.Calculation variables and then parses the result of a calculation.
      * @param nf
      */
     private void addition(DecimalFormat nf) {
@@ -163,7 +163,10 @@ public class ButtonPanel extends JMenuBar implements ActionListener {
     }
 
     private void resetCalc() {
-
+        View.textField.setText("");
+        View.textArea.setText("");
+        Calculation.firstNumber = BigDecimal.ZERO;
+        Calculation.secondNumber = BigDecimal.ZERO;
 
     }
 }
