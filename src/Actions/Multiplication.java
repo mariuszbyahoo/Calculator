@@ -3,6 +3,7 @@ package Actions;
 import App.Calculation;
 
 import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.util.InputMismatchException;
 
 public class Multiplication {
