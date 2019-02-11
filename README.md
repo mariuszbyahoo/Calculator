@@ -1,6 +1,5 @@
 # Calculator
-Simple calculator written in Java with a GUI made in Java Swing. Uses BigDecimal to achieve a mathematical precision.
-As I do not have a big knowledge about Java Swing, this app may present a several exceptions which shouldn't occur when we run the last console-based double-powered version of a Calculator. "Translating the whole project" commit.  
+Simple calculator written in Java with a GUI made in Java Swing. Uses BigDecimal to achieve a mathematical precision 
 
 +
 This program needs to make an each calculation step by step. For example:
