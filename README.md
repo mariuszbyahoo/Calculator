@@ -8,14 +8,7 @@ This program needs to make an each calculation step by step. For example:
 Arithmetically, the x variable should be x =(-2), but this app will present the result of a last two numbers.
 So the program's response will be x = 10.   
 
-In order to make a complex calculations you need to calculate them in arithmeticall order, for example:
-3 + 4*2 - (3-1) 
-= first, count 4*2 = 8
-secondary, 3 + multiply result (8)
-= 11
-next, calculate tha bracelet result 3-1
- = 4
- then subtract a bracelet result from the left side of the statement
+In order to make a complex calculations you need to calculate them in arithmeticall order, for example: 3 +  * 2 - (3-1) = first, count 4 * 2 = 8 secondary, 3 + multiply result (8) = 11 next, calculate tha bracelet result 3-1 = 4 then subtract a bracelet result from the left side of the statement
  11 - 4 = 7
  Voila, your result = 11!
 
